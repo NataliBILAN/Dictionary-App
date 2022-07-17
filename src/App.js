@@ -1,12 +1,12 @@
 import "./App.css";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import Dictionary from "./components/Dictionary";
 
 function App() {
   return (
-    <div className="dictionary-wrapper">
-      <TextField id="outlined-basic" label="Type a word" variant="outlined" />
-      <Button color="secondary">Search</Button>
+    <div className="app-wrapper">
+      <header className="app-header">LOGO</header>
+      <Dictionary />
+      <footer className="app-footer">Footer</footer>
     </div>
   );
 }
