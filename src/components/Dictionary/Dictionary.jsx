@@ -13,7 +13,7 @@ export default function Dictionary() {
     await axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchValue}`)
       .then((response) => setData(response.data[0]));
-  });
+  }, [searchValue]);
 
   const handleSearchButtonClick = (event) => {
     event.preventDefault();
