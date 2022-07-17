@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 import TextField from "@mui/material/TextField";
@@ -9,11 +9,11 @@ export default function Dictionary() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [data, setData] = useState(null);
 
-  const search = () => {
-    axios
+  const search = useCallback(async () => {
+    await axios
       .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchValue}`)
       .then((response) => setData(response.data[0]));
-  };
+  });
 
   const handleSearchButtonClick = (event) => {
     event.preventDefault();
