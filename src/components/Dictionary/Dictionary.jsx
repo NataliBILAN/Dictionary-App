@@ -1,6 +1,8 @@
 import { React, useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
+import Results from "./../Results";
+
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
@@ -35,7 +37,7 @@ export default function Dictionary() {
       search();
       setIsSubmitting(false);
     }
-  }, [searchValue, search, isSubmitting]);
+  }, [searchValue, isSubmitting]);
 
   console.log("data", data);
 
@@ -54,9 +56,12 @@ export default function Dictionary() {
         color="secondary"
         variant="contained"
         onClick={handleSearchButtonClick}
+        disabled={searchValue === "" ? true : false}
       >
         Search
       </Button>
+
+      <Results data={data} />
     </div>
   );
 }
