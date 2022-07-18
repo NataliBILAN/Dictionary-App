@@ -37,7 +37,7 @@ export default function Dictionary() {
       search();
       setIsSubmitting(false);
     }
-  }, [searchValue, isSubmitting]);
+  }, [searchValue, search, isSubmitting]);
 
   console.log("data", data);
 
