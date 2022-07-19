@@ -1,0 +1,18 @@
+footer {
+  padding: 10px 10px;
+  border-top: 1px solid #5603ad;
+  font-size: 12px;
+  font-weight: bold;
+  position: fixed;
+  height: 50px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+  background-color: #f0fff1;
+}
+
+footer a {
+  color: #5603ad;
+  font-weight: bold;
+}

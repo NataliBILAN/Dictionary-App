@@ -5,16 +5,24 @@ import Results from "./../Results";
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 
 export default function Dictionary() {
   const [searchValue, setSearchValue] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [data, setData] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const search = useCallback(async () => {
-    await axios
-      .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchValue}`)
-      .then((response) => setData(response.data[0]));
+    try {
+      await axios
+        .get(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchValue}`)
+        .then((response) => setData(response.data[0]));
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   }, [searchValue]);
 
   const handleSearchButtonClick = (event) => {
@@ -30,6 +38,8 @@ export default function Dictionary() {
 
   const handleTextFieldChange = ({ target }) => {
     setSearchValue(target.value);
+    setErrorMessage("");
+    setData(null);
   };
 
   useEffect(() => {
@@ -40,28 +50,44 @@ export default function Dictionary() {
   }, [searchValue, search, isSubmitting]);
 
   console.log("data", data);
+  console.log("errorMessage", errorMessage);
+
+  
 
   return (
-    <div>
-      <TextField
-        label="Type a word"
-        variant="filled"
-        type="search"
-        autoComplete="off"
-        value={searchValue}
-        onChange={handleTextFieldChange}
-        onKeyDown={handleEnterClick}
-      />
-      <Button
-        color="secondary"
-        variant="contained"
-        onClick={handleSearchButtonClick}
-        disabled={searchValue === "" ? true : false}
-      >
-        Search
-      </Button>
-
+    <Container className="dictionary">
+      <Typography variant="h4">What word do you want to look up?</Typography>
+      <Grid container spacing={2}>
+        <Grid item xs={8}>
+          <TextField
+            variant="outlined"
+            type="search"
+            autoComplete="off"
+            value={searchValue}
+            onChange={handleTextFieldChange}
+            onKeyDown={handleEnterClick}
+            fullWidth
+            size="small"
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <Button
+            color="secondary"
+            variant="contained"
+            onClick={handleSearchButtonClick}
+            disabled={searchValue === "" ? true : false}
+          >
+            Search
+          </Button>
+        </Grid>
+      </Grid>
+      <Typography variant="caption">i.e. london, html, yoga, coding</Typography>
+      {errorMessage && (
+        <Typography variant="h3" color="red">
+          {errorMessage}
+        </Typography>
+      )}
       <Results data={data} />
-    </div>
+    </Container>
   );
 }

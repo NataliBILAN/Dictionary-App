@@ -1,13 +1,15 @@
+import { Container } from "@mui/system";
 import "./App.css";
 import Dictionary from "./components/Dictionary";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="app-wrapper">
+    <Container className="app-wrapper">
       <header className="app-header">LOGO</header>
       <Dictionary />
-      <footer className="app-footer">Footer</footer>
-    </div>
+      <Footer />
+    </Container>
   );
 }
 
