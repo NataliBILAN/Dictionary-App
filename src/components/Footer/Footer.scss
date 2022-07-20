@@ -9,10 +9,13 @@ footer {
   left: 0px;
   right: 0px;
   margin-bottom: 0px;
-  background-color: #f0fff1;
+  background-color: #efefef;
+  
+    a {
+      color: #5603ad;
+      font-weight: bold;
+    }
+
 }
 
-footer a {
-  color: #5603ad;
-  font-weight: bold;
-}
+

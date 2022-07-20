@@ -56,7 +56,7 @@ export default function Dictionary() {
 
   return (
     <Container className="dictionary">
-      <Typography variant="h4">What word do you want to look up?</Typography>
+      <Typography variant="h4" className="dictionary-title">What word do you want to look up?</Typography>
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <TextField
