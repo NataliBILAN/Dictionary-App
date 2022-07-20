@@ -1,6 +1,7 @@
 import { React } from "react";
 import Divider from "@mui/material/Divider";
 import { Typography } from "@mui/material";
+import Phonetics from "./../Phonetics/Phonetics";
 
 export default function Results({ data }) {
   if (data) {
@@ -10,6 +11,8 @@ export default function Results({ data }) {
     return (
       <div>
         <h2>{data.word}</h2>
+        <Phonetics phonetics={data.phonetics} />
+
         <ul>
           {data.meanings.map((meaning, index) => {
             return (
