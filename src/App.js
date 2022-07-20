@@ -1,5 +1,5 @@
 import { Container } from "@mui/system";
-import "./App.css";
+import "./App.scss";
 import Dictionary from "./components/Dictionary";
 import Footer from "./components/Footer";
 

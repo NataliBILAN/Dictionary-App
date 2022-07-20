@@ -1,5 +1,4 @@
 import { React } from "react";
-import { CardMedia } from "@mui/material";
 import { IconButton } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
