@@ -1,7 +1,6 @@
 import { React } from "react";
 import Divider from "@mui/material/Divider";
 import { Typography } from "@mui/material";
-import { Card } from "@mui/material";
 import Phonetics from "./../Phonetics";
 
 export default function Results({ data, photos }) {

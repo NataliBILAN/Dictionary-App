@@ -70,7 +70,7 @@ export default function Dictionary() {
       getPhotos();
       setIsSubmitting(false);
     }
-  }, [searchValue, search, isSubmitting]);
+  }, [searchValue, search, isSubmitting, getPhotos]);
 
   return (
     <Container className="dictionary">
