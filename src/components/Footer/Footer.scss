@@ -1,6 +1,7 @@
 .footer {
   padding: 10px 10px;
   border-top: 1px solid #62acb5;
+  background-image: url("./../../images/background.jpg");
   font-size: 12px;
   font-weight: bold;
   position: fixed;
@@ -9,7 +10,7 @@
   left: 0px;
   right: 0px;
   margin-bottom: 0px;
-  background-color: #efefef;
+  text-align: center;
   
     &-link {
       color: #62acb5;

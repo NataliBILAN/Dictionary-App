@@ -11,8 +11,8 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
 export default function Dictionary() {
-  const [searchValue, setSearchValue] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [searchValue, setSearchValue] = useState("peace");
+  const [isSubmitting, setIsSubmitting] = useState(true);
   const [data, setData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [photos, setPhotos] = useState(null);
@@ -74,7 +74,7 @@ export default function Dictionary() {
 
   return (
     <Container className="dictionary">
-      <Typography variant="h4" className="dictionary-title">
+      <Typography variant="h4" className="dictionary-title" gutterBottom="true">
         What word do you want to look up?
       </Typography>
       <Grid container spacing={2}>
