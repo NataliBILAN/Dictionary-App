@@ -1,24 +1,31 @@
+import { Typography, Container } from "@mui/material";
 import React from "react";
 
 export default function Footer() {
   return (
-    <footer>
-      This project was coded by Natali Bilan and is{" "}
-      <a
-        href="https://github.com/NataliBILAN/Forecast"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        open-sourced on GitHub
-      </a>{" "}
-      and{" "}
-      <a
-        href="https://remarkable-madeleine-524916.netlify.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        hosted on Netlify
-      </a>
+    <footer className="footer">
+      <Container>
+        <Typography variant="p">
+          This project was coded by Natali Bilan and is{" "}
+          <a
+            href="https://github.com/NataliBILAN/Dictionary-App"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-link"
+          >
+            open-sourced on GitHub
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://remarkable-madeleine-524916.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-link"
+          >
+            hosted on Netlify
+          </a>
+        </Typography>
+      </Container>
     </footer>
   );
 }

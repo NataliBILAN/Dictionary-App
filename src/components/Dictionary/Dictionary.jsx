@@ -2,6 +2,7 @@ import { React, useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 import Results from "./../Results";
+import Photos from "./../Photos";
 
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -14,6 +15,24 @@ export default function Dictionary() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [data, setData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
+  const [photos, setPhotos] = useState(null);
+
+  const pexelApiKey =
+    "563492ad6f917000010000019419c4fa17674249b2f99cb72490cf3f";
+
+  const getPhotos = useCallback(async () => {
+    try {
+      await axios
+        .get(
+          `https://api.pexels.com/v1/search?query=${searchValue}&per_page=9`,
+          { headers: { Authorization: `Bearer ${pexelApiKey}` } }
+        )
+        .then((response) => setPhotos(response.data.photos));
+    } catch (error) {
+      setErrorMessage(error.message);
+      setPhotos(null);
+    }
+  }, [searchValue]);
 
   const search = useCallback(async () => {
     try {
@@ -22,6 +41,7 @@ export default function Dictionary() {
         .then((response) => setData(response.data[0]));
     } catch (error) {
       setErrorMessage(error.message);
+      setData(null);
     }
   }, [searchValue]);
 
@@ -33,6 +53,7 @@ export default function Dictionary() {
   const handleEnterClick = ({ key }) => {
     if (key === "Enter") {
       search();
+      getPhotos();
     }
   };
 
@@ -40,23 +61,22 @@ export default function Dictionary() {
     setSearchValue(target.value);
     setErrorMessage("");
     setData(null);
+    setPhotos(null);
   };
 
   useEffect(() => {
     if (isSubmitting && searchValue) {
       search();
+      getPhotos();
       setIsSubmitting(false);
     }
   }, [searchValue, search, isSubmitting]);
 
-  console.log("data", data);
-  console.log("errorMessage", errorMessage);
-
-  
-
   return (
     <Container className="dictionary">
-      <Typography variant="h4" className="dictionary-title">What word do you want to look up?</Typography>
+      <Typography variant="h4" className="dictionary-title">
+        What word do you want to look up?
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <TextField
@@ -72,7 +92,9 @@ export default function Dictionary() {
         </Grid>
         <Grid item xs={4}>
           <Button
-            color="secondary"
+            style={{
+              backgroundColor: "#d88d0e",
+            }}
             variant="contained"
             onClick={handleSearchButtonClick}
             disabled={searchValue === "" ? true : false}
@@ -88,6 +110,7 @@ export default function Dictionary() {
         </Typography>
       )}
       <Results data={data} />
+      {!errorMessage && <Photos photos={photos} />}
     </Container>
   );
 }

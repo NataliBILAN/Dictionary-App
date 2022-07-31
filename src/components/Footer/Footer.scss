@@ -1,6 +1,6 @@
-footer {
+.footer {
   padding: 10px 10px;
-  border-top: 1px solid #5603ad;
+  border-top: 1px solid #62acb5;
   font-size: 12px;
   font-weight: bold;
   position: fixed;
@@ -11,8 +11,8 @@ footer {
   margin-bottom: 0px;
   background-color: #efefef;
   
-    a {
-      color: #5603ad;
+    &-link {
+      color: #62acb5;
       font-weight: bold;
     }
 

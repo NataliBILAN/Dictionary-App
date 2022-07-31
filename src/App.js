@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <Container className="app-wrapper">
-      <header className="app-header">LOGO</header>
       <Dictionary />
       <Footer />
     </Container>
